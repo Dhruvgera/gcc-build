@@ -64,7 +64,9 @@ build_lld() {
     -DLLVM_TARGET_ARCH=$ARCH_CLANG \
     -DLLVM_TARGETS_TO_BUILD=$ARCH_CLANG \
     -DCMAKE_CXX_COMPILER="$(which clang++)" \
+    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
     -DCMAKE_C_COMPILER=$(which clang) \
+    -DCMAKE_C_COMPILER_LAUNCHER=ccache \
     -DLLVM_OPTIMIZED_TABLEGEN=True \
     -DLLVM_USE_LINKER=lld \
     -DLLVM_ENABLE_LTO=Full \
