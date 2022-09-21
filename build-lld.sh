@@ -64,12 +64,9 @@ build_lld() {
     -DLLVM_TARGET_ARCH=$ARCH_CLANG \
     -DLLVM_TARGETS_TO_BUILD=$ARCH_CLANG \
     -DCMAKE_CXX_COMPILER="$(which clang++)" \
-    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
     -DCMAKE_C_COMPILER=$(which clang) \
-    -DCMAKE_C_COMPILER_LAUNCHER=ccache \
     -DLLVM_OPTIMIZED_TABLEGEN=True \
     -DLLVM_USE_LINKER=lld \
-    -DLLVM_ENABLE_LTO=Full \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_BUILD_RUNTIME=Off \
     -DLLVM_INCLUDE_TESTS=Off \
@@ -81,8 +78,6 @@ build_lld() {
     -DLLVM_PARALLEL_LINK_JOBS=$(nproc) \
     -DBUILD_SHARED_LIBS=Off \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY=On \
-    -DCMAKE_C_FLAGS="-O3" \
-    -DCMAKE_CXX_FLAGS="-O3" \
     -DLLVM_ENABLE_PIC=False \
     ../llvm
   ninja
